@@ -483,8 +483,8 @@ namespace Microsoft.Data.Entity.SqlServer.FunctionalTests
             return new SqlConnectionStringBuilder
                 {
                     DataSource = @"(localdb)\MSSQLLocalDB",
-                    MultipleActiveResultSets = new Random().Next(0, 2) == 1,
-                    //MultipleActiveResultSets = false,
+                    //MultipleActiveResultSets = new Random().Next(0, 2) == 1,
+                    MultipleActiveResultSets = false,
                     InitialCatalog = name,
                     IntegratedSecurity = true,
                     ConnectTimeout = 30
