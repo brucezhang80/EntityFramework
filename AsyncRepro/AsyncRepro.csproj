@@ -34,6 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Framework.DependencyInjection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Framework.DependencyInjection.1.0.0-beta6-11465\lib\net45\Microsoft.Framework.DependencyInjection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Framework.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta6-11465\lib\net45\Microsoft.Framework.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,11 +57,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\src\EntityFramework.Core\EntityFramework.Core.csproj">
       <Project>{71415CEC-8111-4C73-8751-512D22F10602}</Project>
       <Name>EntityFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\EntityFramework.Relational\EntityFramework.Relational.csproj">
+      <Project>{75c5a774-a3f3-43eb-97d3-dbe0cf2825d8}</Project>
+      <Name>EntityFramework.Relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\EntityFramework.SqlServer\EntityFramework.SqlServer.csproj">
+      <Project>{04e6620b-5b41-45fe-981a-f40eb7686b0e}</Project>
+      <Name>EntityFramework.SqlServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\test\EntityFramework.Core.FunctionalTests\EntityFramework.Core.FunctionalTests.csproj">
       <Project>{6ab933c7-de2a-45f2-bdc6-e71a01ef7756}</Project>
