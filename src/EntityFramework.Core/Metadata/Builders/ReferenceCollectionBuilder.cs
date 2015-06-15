@@ -96,7 +96,7 @@ namespace Microsoft.Data.Entity.Metadata.Builders
         /// <returns> The same builder instance so that multiple configuration calls can be chained. </returns>
         public virtual ReferenceCollectionBuilder ForeignKey([NotNull] params string[] foreignKeyPropertyNames)
         {
-            Check.NotNull(foreignKeyPropertyNames, nameof(foreignKeyPropertyNames));
+            Check.NotEmpty(foreignKeyPropertyNames, nameof(foreignKeyPropertyNames));
 
             return new ReferenceCollectionBuilder(Builder.ForeignKey(foreignKeyPropertyNames, ConfigurationSource.Explicit));
         }
@@ -111,7 +111,7 @@ namespace Microsoft.Data.Entity.Metadata.Builders
         /// <returns> The same builder instance so that multiple configuration calls can be chained. </returns>
         public virtual ReferenceCollectionBuilder PrincipalKey([NotNull] params string[] keyPropertyNames)
         {
-            Check.NotNull(keyPropertyNames, nameof(keyPropertyNames));
+            Check.NotEmpty(keyPropertyNames, nameof(keyPropertyNames));
 
             return new ReferenceCollectionBuilder(Builder.PrincipalKey(keyPropertyNames, ConfigurationSource.Explicit));
         }
@@ -120,10 +120,10 @@ namespace Microsoft.Data.Entity.Metadata.Builders
         ///     Configures whether this is a required relationship (i.e. whether the foreign key property(s) can
         ///     be assigned null).
         /// </summary>
-        /// <param name="required"> A value indicating whether this is a required relationship. </param>
+        /// <param name="isRequired"> A value indicating whether this is a required relationship. </param>
         /// <returns> The same builder instance so that multiple configuration calls can be chained. </returns>
-        public virtual ReferenceCollectionBuilder Required(bool required = true)
-            => new ReferenceCollectionBuilder(Builder.Required(required, ConfigurationSource.Explicit));
+        public virtual ReferenceCollectionBuilder Required(bool isRequired = true)
+            => new ReferenceCollectionBuilder(Builder.Required(isRequired, ConfigurationSource.Explicit));
 
         private InternalRelationshipBuilder Builder => ((IAccessor<InternalRelationshipBuilder>)this).Service;
     }
