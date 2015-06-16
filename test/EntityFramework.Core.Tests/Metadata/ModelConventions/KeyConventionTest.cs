@@ -25,7 +25,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
             public int SampleEntityId { get; set; }
         }
 
-        #region GenerateValueOnAdd
+        #region IsValueGeneratedOnAdd
 
         [Fact]
         public void GenerateValueOnAdd_flag_is_set_for_key_properties()
@@ -40,11 +40,11 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.NotNull(keyProperties[0].GenerateValueOnAdd);
-            Assert.NotNull(keyProperties[1].GenerateValueOnAdd);
+            Assert.NotNull(keyProperties[0].IsValueGeneratedOnAdd);
+            Assert.NotNull(keyProperties[1].IsValueGeneratedOnAdd);
 
-            Assert.True(keyProperties[0].GenerateValueOnAdd.Value);
-            Assert.True(keyProperties[1].GenerateValueOnAdd.Value);
+            Assert.True(keyProperties[0].IsValueGeneratedOnAdd.Value);
+            Assert.True(keyProperties[1].IsValueGeneratedOnAdd.Value);
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.Null(keyProperties[0].GenerateValueOnAdd);
+            Assert.Null(keyProperties[0].IsValueGeneratedOnAdd);
         }
 
         [Fact]
@@ -98,8 +98,8 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.True(keyProperties[0].GenerateValueOnAdd);
-            Assert.Null(keyProperties[1].GenerateValueOnAdd);
+            Assert.True(keyProperties[0].IsValueGeneratedOnAdd);
+            Assert.Null(keyProperties[1].IsValueGeneratedOnAdd);
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.Null(keyProperties[0].GenerateValueOnAdd);
+            Assert.Null(keyProperties[0].IsValueGeneratedOnAdd);
         }
 
         [Fact]
@@ -144,7 +144,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.False(keyProperties[0].GenerateValueOnAdd.Value);
+            Assert.False(keyProperties[0].IsValueGeneratedOnAdd.Value);
         }
 
         [Fact]
@@ -162,7 +162,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.True(keyProperties[0].GenerateValueOnAdd);
+            Assert.True(keyProperties[0].IsValueGeneratedOnAdd);
 
             principalEntityBuilder.Relationship(
                 principalEntityBuilder,
@@ -173,7 +173,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
                 null,
                 ConfigurationSource.Convention);
 
-            Assert.Null(keyProperties[0].GenerateValueOnAdd);
+            Assert.Null(keyProperties[0].IsValueGeneratedOnAdd);
         }
 
         [Fact]
@@ -191,7 +191,7 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
 
             var keyProperties = keyBuilder.Metadata.Properties;
 
-            Assert.True(keyProperties[0].GenerateValueOnAdd);
+            Assert.True(keyProperties[0].IsValueGeneratedOnAdd);
 
             var relationshipBuilder = principalEntityBuilder.Relationship(
                 principalEntityBuilder,
@@ -202,11 +202,11 @@ namespace Microsoft.Data.Entity.Tests.Metadata.ModelConventions
                 null,
                 ConfigurationSource.Convention);
 
-            Assert.Null(keyProperties[0].GenerateValueOnAdd);
+            Assert.Null(keyProperties[0].IsValueGeneratedOnAdd);
 
             referencedEntityBuilder.RemoveRelationship(relationshipBuilder.Metadata, ConfigurationSource.Convention);
 
-            Assert.True(keyProperties[0].GenerateValueOnAdd);
+            Assert.True(keyProperties[0].IsValueGeneratedOnAdd);
         }
 
         #endregion

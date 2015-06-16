@@ -108,11 +108,11 @@ namespace Microsoft.Data.Entity.Metadata.Internal
 
         public virtual bool GenerateValueOnAdd(bool? generateValue, ConfigurationSource configurationSource)
         {
-            if (configurationSource.CanSet(_generateValueOnAddConfigurationSource, Metadata.GenerateValueOnAdd.HasValue)
-                || Metadata.GenerateValueOnAdd.Value == generateValue)
+            if (configurationSource.CanSet(_generateValueOnAddConfigurationSource, Metadata.IsValueGeneratedOnAdd.HasValue)
+                || Metadata.IsValueGeneratedOnAdd.Value == generateValue)
             {
                 if (_generateValueOnAddConfigurationSource == null
-                    && Metadata.GenerateValueOnAdd != null)
+                    && Metadata.IsValueGeneratedOnAdd != null)
                 {
                     _generateValueOnAddConfigurationSource = ConfigurationSource.Explicit;
                 }
@@ -121,7 +121,7 @@ namespace Microsoft.Data.Entity.Metadata.Internal
                     _generateValueOnAddConfigurationSource = configurationSource.Max(_generateValueOnAddConfigurationSource);
                 }
 
-                Metadata.GenerateValueOnAdd = generateValue;
+                Metadata.IsValueGeneratedOnAdd = generateValue;
                 return true;
             }
 
